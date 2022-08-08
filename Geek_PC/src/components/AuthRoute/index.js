@@ -17,22 +17,22 @@ export default class AuthRoute extends Component {
       <Route
         {...rest}
         render={(props) => {
-          if (hasToken()) {
+          // if (hasToken()) {
             //有token，可以登陆
             return <Component {...props}></Component>
-          } else {
-            //如果没有token，返回登陆界面，渲染Redirect组件
-            //这里有BUG！！！！！！！！！
-            return (
-              <Redirect
-                to={{
-                  pathname: '/login',
-                  state: { from: props.location.pathname },
-                }}
-              ></Redirect>
-            )
-            // return <Navigate to="/login" />
-          }
+          // } else {
+          //   //如果没有token，返回登陆界面，渲染Redirect组件
+          //   //这里有BUG！！！！！！！！！
+          //   return (
+          //     <Redirect
+          //       to={{
+          //         pathname: '/login',
+          //         state: { from: props.location.pathname },
+          //       }}
+          //     ></Redirect>
+          //   )
+          //   // return <Navigate to="/login" />
+          // }
         }}
       ></Route>
     )

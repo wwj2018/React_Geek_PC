@@ -12,12 +12,16 @@ import Home from 'pages/Home'
 import ArticleList from 'pages/ArticleList'
 import ArticlePublish from 'pages/ArticlePublish'
 import { removeToken } from 'utils/storage'
+import { getUserProfile } from 'api/user'
 
 const { Header, Content, Sider } = Layout
 
 const text = '您确定要退出吗？'
 
 export default class LayoutComponent extends Component {
+  state = {
+    profile: {},
+  }
   render() {
     return (
       <div className={styles.layout}>
@@ -25,7 +29,7 @@ export default class LayoutComponent extends Component {
           <Header className="header">
             <div className="logo" />
             <div className="profile">
-              <span>用户名</span>
+              <span>{this.state.profile.name}</span>
               <span>
                 <Popconfirm
                   placement="topRight"
@@ -44,20 +48,20 @@ export default class LayoutComponent extends Component {
               <Menu
                 theme="dark"
                 mode="inline"
-                defaultSelectedKeys={['1']}
+                defaultSelectedKeys={[this.props.location.pathname]}
                 items={[
                   {
-                    key: '1',
+                    key: '/home',
                     icon: <HomeOutlined />,
                     label: <Link to="/home">数据概览</Link>,
                   },
                   {
-                    key: '2',
+                    key: '/home/list',
                     icon: <HddOutlined />,
                     label: <Link to="/home/list">内容管理</Link>,
                   },
                   {
-                    key: '3',
+                    key: '/home/publish',
                     icon: <EditOutlined />,
                     label: <Link to="/home/publish">发布文章</Link>,
                   },
@@ -91,6 +95,14 @@ export default class LayoutComponent extends Component {
         </Layout>
       </div>
     )
+  }
+
+  async componentDidMount() {
+    const res = await getUserProfile()
+    console.log(res)
+    this.setState({
+      profile: res.data,
+    })
   }
 
   onConfirm = () => {

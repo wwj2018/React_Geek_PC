@@ -1,11 +1,18 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Router, Route, Switch } from 'react-router-dom'
 import AuthRoute from 'components/AuthRoute'
 import Home from 'pages/Layout'
 import Login from 'pages/Login'
+import history from 'utils/history'
 
+/*
+  import { HashRouter } from 'react-router-dom'
+
+  hashRouter = <Router history={createHashHistory()}></Router> 
+  BrowserRouter = <Router history={ createBrowserHistory() }</Router> 
+  */
 function App() {
   return (
-    <Router>
+    <Router history={history}>
       <div className="App">
         {/* <Link to="/login">登陆</Link>
         <Link to="/home">首页</Link> */}
