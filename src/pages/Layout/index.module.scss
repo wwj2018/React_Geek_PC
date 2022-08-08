@@ -1,0 +1,63 @@
+// .aa {
+//   color: green;
+//   .bb {
+//     color: red;
+//   }
+//   //如果被:global包裹的类名，代表全局类名，就不会被module处理
+//   :global {
+//     .iconfont {
+//       color: red;
+//     }
+//     .ant-pagination-item-active {
+//       border-color: red;
+//       a {
+//         color: red;
+//       }
+//     }
+//   }
+// }
+
+.layout {
+  //layout的样式
+  height: 100vh;
+  :global {
+    //子元素的样式
+    .ant-layout {
+      height: 100%;
+    }
+    .ant-layout-header {
+      padding: 0;
+      position: relative;
+    }
+    .logo {
+      float: left;
+      width: 200px;
+      height: 60px;
+      background-image: url(~assets/logo.png);
+      background-size: 200px 60px;
+      margin: 2px 0;
+    }
+    .profile {
+      position: absolute;
+      color: #fff;
+      font-weight: 700px;
+      right: 20px;
+      span + span {
+        margin-left: 20px;
+        cursor: pointer;
+      }
+    }
+
+    .ant-row-rtl .logo {
+      float: right;
+      margin: 16px 0 16px 24px;
+    }
+
+    .site-layout-background {
+      background: #fff;
+    }
+    .ant-menu-item {
+      margin: 0;
+    }
+  }
+}

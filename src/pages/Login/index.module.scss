@@ -1,0 +1,27 @@
+.login {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  // 配置绝对路径：scss预编译文件绝对路径需要加~，不然就得../../
+  background-image: url(~assets/login.png);
+  background-size: cover;
+
+  //使用全局global，在父级的js修改一次样式即可。包裹了。
+  :global {
+    .login-contaniner {
+      width: 440px;
+      height: 360px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .login-logo {
+      width: 200px;
+      height: 60px;
+      display: block;
+      margin: 0 auto 20px;
+    }
+  }
+}
